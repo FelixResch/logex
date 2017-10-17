@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common.iml" group="logic-expr-evaluator-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_main.iml" group="logic-expr-evaluator-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_test.iml" group="logic-expr-evaluator-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm.iml" group="logic-expr-evaluator-jvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_main.iml" group="logic-expr-evaluator-jvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_test.iml" group="logic-expr-evaluator-jvm" />
+    </modules>
+  </component>
+</project>
