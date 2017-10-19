@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common.iml" group="logic-expr-evaluator-common" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_main.iml" group="logic-expr-evaluator-common" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-common/logic-expr-evaluator-common_test.iml" group="logic-expr-evaluator-common" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm.iml" group="logic-expr-evaluator-jvm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_main.iml" group="logic-expr-evaluator-jvm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logic-expr-evaluator-jvm/logic-expr-evaluator-jvm_test.iml" group="logic-expr-evaluator-jvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex.iml" filepath="$PROJECT_DIR$/.idea/modules/logex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common.iml" group="logex-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common_main.iml" group="logex-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common_test.iml" group="logex-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm.iml" group="logex-jvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm_main.iml" group="logex-jvm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-jvm/logex-jvm_test.iml" group="logex-jvm" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-rootProject.name = 'logic-expr-evaluator'
-include 'logic-expr-evaluator-common'
-include 'logic-expr-evaluator-jvm'
+rootProject.name = 'logex'
+include 'logex-common'
+include 'logex-jvm'
 

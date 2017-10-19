@@ -2,6 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="logex-common_main" target="1.8" />
+      <module name="logex-common_test" target="1.8" />
+      <module name="logex-jvm_main" target="1.8" />
+      <module name="logex-jvm_test" target="1.8" />
       <module name="logic-expr-evaluator-common_main" target="1.8" />
       <module name="logic-expr-evaluator-common_test" target="1.8" />
       <module name="logic-expr-evaluator-jvm_main" target="1.8" />
