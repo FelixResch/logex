@@ -5,15 +5,10 @@ import org.web25.felix.logicexpreval.parser.lex.operator.*
 
 class SimpleExpressionLexer : ExpressionLexer {
 
-    val operators = operatorFinder {
+    val operators = OperatorFinder {
+        this load NotOperatorType()
         this load AndOperatorType()
         this load OrOperatorType()
-    }
-
-    private fun operatorFinder(block: OperatorFinder.() -> Unit): OperatorFinder {
-        val operatorFinder = OperatorFinder()
-        operatorFinder.block()
-        return operatorFinder
     }
 
     override fun lex(parts: List<String>): List<LexicalSymbol> {
@@ -82,11 +77,41 @@ class SimpleExpressionLexer : ExpressionLexer {
     }
 
     private fun findOperators(symbols: List<LexicalSymbol>): List<LexicalSymbol> {
-        return symbols
+        val simplifiedSymbols = simplify(symbols)
+        return simplifiedSymbols.flatMap { symbol ->
+            if(symbol is CharacterLexicalSymbol) {
+                operators.findAndSplit(symbol)
+            } else {
+                listOf(symbol)
+            }
+        }
     }
 
     private fun findValues(symbols: List<LexicalSymbol>): List<LexicalSymbol> {
-        return symbols
+        return symbols.map { symbol ->
+            if (symbol is CharacterLexicalSymbol) {
+                ValueLexicalSymbol(symbol.glyphs, symbol.startIndex, symbol.endIndex)
+            } else {
+                symbol
+            }
+        }
+    }
+
+    private fun simplify(symbols: List<LexicalSymbol>): List<LexicalSymbol> {
+        val simplifiedSymbols = mutableListOf<LexicalSymbol>()
+        val glyphs = mutableListOf<CharacterLexicalSymbol>()
+        symbols.forEach { symbol ->
+            if (symbol is CharacterLexicalSymbol) {
+                glyphs.add(symbol)
+            } else {
+                if(glyphs.isNotEmpty()) {
+                    simplifiedSymbols.add(glyphs.simplify())
+                    glyphs.clear()
+                }
+                simplifiedSymbols.add(symbol)
+            }
+        }
+        return simplifiedSymbols
     }
 }
 
