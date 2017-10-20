@@ -25,3 +25,5 @@ buildscript {
 subprojects {
     version = rootProject.version
 }
+
+printVersion
