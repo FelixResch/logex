@@ -11,7 +11,7 @@ class OperatorFinder() {
     private val operatorCache = mutableMapOf<Int, MutableList<Pair<String, OperatorType>>>()
 
     infix fun load(operatorType: OperatorType) {
-        println("Loading operator ${operatorType.name} (${operatorType.unicodeRepresentation}) [${operatorType.operatorMatchers}]")
+        println("Loading operator ${operatorType.name} (${operatorType.unicodeRepresentation}) ${operatorType.operatorMatchers}")
         this.operatorTypes.add(operatorType)
     }
 
@@ -41,6 +41,10 @@ class OperatorFinder() {
     fun findAndSplit(symbol: CharacterLexicalSymbol): List<LexicalSymbol> {
         val length = symbol.length
         val matchers = findMatchers(length)
+        var remainginCharacterSymbol = symbol
+        /*while (matchers.any { remainingCharacterSymbol.contains(it.first) }) {
+
+        }*/
         return listOf(symbol)
     }
 

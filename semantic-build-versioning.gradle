@@ -1,0 +1,9 @@
+startingVersion = '0.0.1'
+tagPrefix = 'v'
+
+preRelease {
+    startingVersion = 'build.0'
+    bump = {
+        "build.${((it - ~/^build\./) as int) + 1}"
+    }
+}

@@ -8,6 +8,6 @@ class OrOperatorType : OperatorType {
 
     override val name: String = "or"
 
-    override val operatorMatchers: List<String> = listOf("|", "-or", "\u2228")
+    override val operatorMatchers: List<String> = listOf("\u2228", "|", "-or")
 
 }

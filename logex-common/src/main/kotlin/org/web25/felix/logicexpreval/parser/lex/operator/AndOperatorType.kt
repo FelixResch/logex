@@ -8,5 +8,5 @@ class AndOperatorType : OperatorType {
 
     override val name: String = "and"
 
-    override val operatorMatchers: List<String> = listOf("&", "-and", "\u2227")
+    override val operatorMatchers: List<String> = listOf("\u2227", "&", "-and")
 }
