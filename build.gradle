@@ -1,7 +1,6 @@
 
 allprojects {
     group 'org.web25.felix'
-    version '0.0.1-SNAPSHOT'
 }
 
 task wrapper(type: Wrapper) {
