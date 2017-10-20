@@ -20,6 +20,9 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../../logex-common/out/production/classes" />
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../logex-common/build/generated">
+      <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/build/generated" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../logex-common/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/main/kotlin" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/main/resources" type="java-resource" />

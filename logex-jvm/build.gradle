@@ -1,4 +1,5 @@
 
+apply plugin: 'artifact-info-plugin'
 apply plugin: 'kotlin-platform-jvm'
 
 archivesBaseName = 'logex-jvm'
@@ -11,6 +12,16 @@ repositories {
     maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
 }
 
+buildscript {
+    dependencies {
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:${dokka_version}"
+    }
+
+    repositories {
+        jcenter()
+    }
+}
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     expectedBy project(":logex-common")
@@ -18,6 +29,8 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 }
+
+apply plugin: 'org.jetbrains.dokka'
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -54,4 +67,17 @@ task sourcesJar(type: Jar) {
 
 artifacts {
     archives sourcesJar
+}
+
+dokka {
+    outputFormat 'html'
+    outputDirectory "$buildDir/javadoc"
+}
+
+artifactInfo {
+    packageName 'org.web25.felix.logicexpreval'
+}
+
+sourceSets {
+    main.kotlin.srcDirs += "$buildDir/generated"
 }

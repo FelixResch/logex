@@ -1,3 +1,4 @@
+apply plugin: 'artifact-info-plugin'
 apply plugin: 'kotlin-platform-common'
 
 repositories {
@@ -21,4 +22,12 @@ task sourcesJar(type: Jar) {
 
 artifacts {
     archives sourcesJar
+}
+
+artifactInfo {
+    packageName 'org.web25.felix.logicexpreval'
+}
+
+sourceSets {
+    main.kotlin.srcDirs += "$buildDir/generated"
 }

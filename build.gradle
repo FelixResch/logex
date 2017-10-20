@@ -10,14 +10,17 @@ task wrapper(type: Wrapper) {
 
 buildscript {
     ext.kotlin_version = '1.2.0-beta-88'
+    ext.dokka_version = '0.9.15'
 
     repositories {
         jcenter()
         mavenCentral()
         maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
+        mavenLocal()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.web25.felix:artifact-info-plugin:0.0.1-SNAPSHOT"
     }
 }
 

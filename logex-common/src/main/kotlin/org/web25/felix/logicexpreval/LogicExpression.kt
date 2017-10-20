@@ -15,7 +15,7 @@ class LogicExpression private constructor(val parts: List<String>) {
         node.initialize(evaluationContext)
         val variations = evaluationContext.variableVariations()
         val evaluationResult = EvaluationResult(evaluationContext)
-        variations.forEach { variation ->
+        variations.forEach { variation : BooleanArray ->
             evaluationContext.loadState(variation)
             val result = node.evaluate(evaluationContext)
             evaluationResult.addResult(variation, result)

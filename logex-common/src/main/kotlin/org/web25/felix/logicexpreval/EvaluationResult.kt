@@ -6,7 +6,7 @@ class EvaluationResult(evaluationContext: EvaluationContext) {
 
     private val results = mutableListOf<EvaluationLineResult>()
 
-    fun addResult(variation: Array<Boolean>, result: Boolean) {
+    fun addResult(variation: BooleanArray, result: Boolean) {
         this.results.add(EvaluationLineResult(variation, result))
     }
 
