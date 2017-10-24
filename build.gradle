@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.web25.felix:artifact-info-plugin:0.0.1-SNAPSHOT"
+        classpath "org.web25.felix:artifact-info-plugin:0.1.0-beta"
     }
 }
 
