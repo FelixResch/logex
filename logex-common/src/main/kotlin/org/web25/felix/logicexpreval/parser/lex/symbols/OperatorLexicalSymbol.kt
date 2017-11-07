@@ -1,6 +1,6 @@
 package org.web25.felix.logicexpreval.parser.lex.symbols
 
-import org.web25.felix.logicexpreval.parser.lex.OperatorType
+import org.web25.felix.logicexpreval.parser.operator.OperatorType
 
 /**
  * Represents a lexical symbol that can be interpreted as operator.

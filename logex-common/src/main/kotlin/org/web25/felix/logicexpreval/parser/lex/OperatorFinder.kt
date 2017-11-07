@@ -1,5 +1,6 @@
 package org.web25.felix.logicexpreval.parser.lex
 
+import org.web25.felix.logicexpreval.parser.operator.OperatorType
 import org.web25.felix.logicexpreval.parser.lex.symbols.CharacterLexicalSymbol
 import org.web25.felix.logicexpreval.parser.lex.symbols.LexicalSymbol
 import org.web25.felix.logicexpreval.parser.lex.symbols.OperatorLexicalSymbol
@@ -12,7 +13,6 @@ class OperatorFinder() {
     private val operatorCache = mutableMapOf<Int, MutableList<Pair<String, OperatorType>>>()
 
     infix fun load(operatorType: OperatorType) {
-        println("Loading operator ${operatorType.name} (${operatorType.unicodeRepresentation}) ${operatorType.operatorMatchers}")
         this.operatorTypes.add(operatorType)
     }
 
@@ -66,7 +66,7 @@ class OperatorFinder() {
                             break
                         } else if (m.size == 1) {
                             val pair = m.first()
-                            skip = pair.first.length
+                            skip = pair.first.length - 1
                             if (buffer.isNotEmpty()) {
                                 symbols.add(CharacterLexicalSymbol(buffer.toList(), 0, 0))
                                 buffer.clear()
@@ -83,7 +83,6 @@ class OperatorFinder() {
         if(buffer.isNotEmpty()) {
             symbols.add(CharacterLexicalSymbol(buffer.toList(), 0, 0))
         }
-        println("$symbol -> $symbols")
         return symbols
     }
 

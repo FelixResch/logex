@@ -17,4 +17,8 @@ class ClosingBracketLexicalSymbol(glyphs: List<Char>, startIndex: Int, endIndex:
      * @since 1.0.0
      */
     lateinit var openingBracket : OpeningBracketLexicalSymbol
+
+    override fun toString(): String = "cb:$bracketType"
+
+    var used = false
 }

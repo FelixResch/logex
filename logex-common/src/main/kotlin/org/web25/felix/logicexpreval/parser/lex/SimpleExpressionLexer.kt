@@ -1,7 +1,7 @@
 package org.web25.felix.logicexpreval.parser.lex
 
 import org.web25.felix.logicexpreval.parser.lex.symbols.*
-import org.web25.felix.logicexpreval.parser.lex.operator.*
+import org.web25.felix.logicexpreval.parser.operator.*
 
 class SimpleExpressionLexer : ExpressionLexer {
 
@@ -17,7 +17,7 @@ class SimpleExpressionLexer : ExpressionLexer {
         validateBrackets(symbols)
         symbols = findOperators(symbols)
         symbols = findValues(symbols)
-        return symbols
+        return symbols.filterNot { it is WhitespaceLexicalSymbol }
     }
 
     private fun buildSymbols(parts: List<String>): List<LexicalSymbol> {
@@ -51,18 +51,22 @@ class SimpleExpressionLexer : ExpressionLexer {
 
 
     private fun validateBrackets(symbols: List<LexicalSymbol>) {
-        val index = symbols.mapIndexed { i, symbol -> Pair(i, symbol)}
+        val indices = symbols.mapIndexed { i, symbol -> Pair(i, symbol)}
                 .filter { it.second is OpeningBracketLexicalSymbol }
                 .map { it.first }
-        for (i in index.reversed()) {
+        for (i in indices.reversed()) {
             val openingBracket = symbols[i] as OpeningBracketLexicalSymbol
             var found = false
-            symbols.subList(i, symbols.lastIndex)
-                    .find {it is ClosingBracketLexicalSymbol && openingBracket.bracketType == it.bracketType}
+            val sublist = symbols.subList(i + 1, symbols.size)
+            sublist
+                    .find {
+                        it is ClosingBracketLexicalSymbol && openingBracket.bracketType == it.bracketType && !it.used
+                    }
                     ?.let {
                         val closingBracket = it as ClosingBracketLexicalSymbol
                         openingBracket.closingBracket = closingBracket
                         closingBracket.openingBracket = openingBracket
+                        closingBracket.used = true
                         found = true
                     }
             if(!found) {
@@ -110,6 +114,9 @@ class SimpleExpressionLexer : ExpressionLexer {
                 }
                 simplifiedSymbols.add(symbol)
             }
+        }
+        if (glyphs.isNotEmpty()) {
+            simplifiedSymbols.add(glyphs.simplify())
         }
         return simplifiedSymbols
     }

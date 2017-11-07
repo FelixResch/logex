@@ -1,4 +1,4 @@
-package org.web25.felix.logicexpreval.parser.lex
+package org.web25.felix.logicexpreval.parser.operator
 
 /**
  * Represents one type of operator.

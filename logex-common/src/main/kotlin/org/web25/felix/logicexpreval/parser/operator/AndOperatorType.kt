@@ -1,6 +1,4 @@
-package org.web25.felix.logicexpreval.parser.lex.operator
-
-import org.web25.felix.logicexpreval.parser.lex.OperatorType
+package org.web25.felix.logicexpreval.parser.operator
 
 /**
  * Operator type for the **AND** operator.

@@ -19,4 +19,25 @@ abstract class LexicalSymbol(val glyphs: List<Char>, val startIndex: Int, val en
      */
     abstract val typeName: String
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is LexicalSymbol) return false
+
+        if (glyphs != other.glyphs) return false
+        if (typeName != other.typeName) return false
+
+        if(this is OperatorLexicalSymbol && other is OperatorLexicalSymbol) {
+            return this.operatorType.name == other.operatorType.name
+        }
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = glyphs.hashCode()
+        result = 31 * result + typeName.hashCode()
+        return result
+    }
+
+
 }

@@ -36,8 +36,6 @@ abstract class BracketLexicalSymbol(glyphs: List<Char>, startIndex: Int, endInde
         }
     }
 
-    override fun toString(): String = "ob:$bracketType"
-
     companion object {
 
         /**
