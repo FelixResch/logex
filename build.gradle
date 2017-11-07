@@ -9,13 +9,13 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    ext.kotlin_version = '1.2.0-beta-88'
+    ext.kotlin_version = '1.2.0-rc-39'
     ext.dokka_version = '0.9.15'
 
     repositories {
         jcenter()
         mavenCentral()
-        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
+        maven { url "https://dl.bintray.com/kotlin/kotlin-dev/" }
         mavenLocal()
     }
     dependencies {
@@ -26,6 +26,12 @@ buildscript {
 
 subprojects {
     version = rootProject.version
+
+    repositories {
+        maven { url "https://dl.bintray.com/kotlin/kotlin-dev/" }
+        jcenter()
+        mavenCentral()
+    }
 }
 
 printVersion

@@ -15,10 +15,10 @@ import kotlin.test.assertEquals
 class SimpleExpressionLexerTest {
 
     @Test
-    @Ignore
     fun testLexingWithWhitespace() {
         val lexer = SimpleExpressionLexer()
         val lexicalSymbols = lexer.lex(listOf("A -and (B -or C)"))
+        println(lexicalSymbols)
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
                 OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType()),

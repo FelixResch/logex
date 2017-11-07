@@ -1,12 +1,6 @@
 apply plugin: 'artifact-info-plugin'
 apply plugin: 'kotlin-platform-common'
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven { url 'http://dl.bintray.com/kotlin/kotlin-eap-1.2' }
-}
-
 archivesBaseName='logex-common'
 
 dependencies {

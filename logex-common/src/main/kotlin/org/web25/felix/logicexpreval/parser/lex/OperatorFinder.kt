@@ -2,6 +2,7 @@ package org.web25.felix.logicexpreval.parser.lex
 
 import org.web25.felix.logicexpreval.parser.lex.symbols.CharacterLexicalSymbol
 import org.web25.felix.logicexpreval.parser.lex.symbols.LexicalSymbol
+import org.web25.felix.logicexpreval.parser.lex.symbols.OperatorLexicalSymbol
 
 class OperatorFinder() {
 
@@ -41,11 +42,49 @@ class OperatorFinder() {
     fun findAndSplit(symbol: CharacterLexicalSymbol): List<LexicalSymbol> {
         val length = symbol.length
         val matchers = findMatchers(length)
-        var remainginCharacterSymbol = symbol
-        /*while (matchers.any { remainingCharacterSymbol.contains(it.first) }) {
-
-        }*/
-        return listOf(symbol)
+        val remainingCharacterSymbol = symbol
+        val buffer = mutableListOf<Char>()
+        val symbols = mutableListOf<LexicalSymbol>()
+        var skip = 0
+        for (i in 0..remainingCharacterSymbol.glyphs.lastIndex) {
+            if (skip > 0) {
+                skip--
+            } else {
+                val possibleMatchers = matchers.filter { it.first[0] == remainingCharacterSymbol.glyphs[i] }
+                if (possibleMatchers.isNotEmpty()) {
+                    for (j in i..remainingCharacterSymbol.glyphs.lastIndex) {
+                        val m = matchers.filter { it.first.length >= j - i }.filter {
+                            it.first.subSequence(0, j - i).forEachIndexed { index, char ->
+                                if (char != remainingCharacterSymbol.glyphs[index + i]) {
+                                    return@filter false
+                                }
+                            }
+                            true
+                        }
+                        if (m.isEmpty()) {
+                            buffer.add(remainingCharacterSymbol.glyphs[i])
+                            break
+                        } else if (m.size == 1) {
+                            val pair = m.first()
+                            skip = pair.first.length
+                            if (buffer.isNotEmpty()) {
+                                symbols.add(CharacterLexicalSymbol(buffer.toList(), 0, 0))
+                                buffer.clear()
+                            }
+                            symbols.add(OperatorLexicalSymbol(pair.first.toList(), 0, 0, pair.second))
+                            break
+                        }
+                    }
+                } else {
+                    buffer.add(remainingCharacterSymbol.glyphs[i])
+                }
+            }
+        }
+        if(buffer.isNotEmpty()) {
+            symbols.add(CharacterLexicalSymbol(buffer.toList(), 0, 0))
+        }
+        println("$symbol -> $symbols")
+        return symbols
     }
 
     private fun findMatchers(length: Int): List<Pair<String, OperatorType>> {
