@@ -1,5 +1,6 @@
 package org.web25.felix.logicexpreval.parser.operator
 
+import org.web25.felix.logicexpreval.parser.ref.ClosureReference
 import org.web25.felix.logicexpreval.parser.ref.OperatorReference
 import org.web25.felix.logicexpreval.parser.ref.OperationReference
 
@@ -41,6 +42,6 @@ interface OperatorType {
      */
     val operatorMatchers: List<String>
 
-    fun build(reference: OperatorReference): OperationReference
+    fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference
 
 }

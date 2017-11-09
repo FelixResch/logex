@@ -5,7 +5,7 @@ import org.web25.felix.logicexpreval.parser.lex.symbols.OperatorLexicalSymbol
 
 class OperatorReference(lexicalSymbol: OperatorLexicalSymbol): Reference() {
 
-    private val operatorType = lexicalSymbol.operatorType
+    val operatorType = lexicalSymbol.operatorType
 
     override fun resolve(): ExpressionNode {
         TODO("Intermediary references should not be evaluated!")

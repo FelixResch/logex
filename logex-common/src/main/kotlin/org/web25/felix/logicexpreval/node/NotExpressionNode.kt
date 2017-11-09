@@ -11,7 +11,7 @@ import org.web25.felix.logicexpreval.EvaluationContext
  * @since 1.0.0
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  */
-class NotExpressionNode (val content: ExpressionNode, partIndex: Int): OperatorExpressionNode("op:not", partIndex) {
+class NotExpressionNode (val content: ExpressionNode, partIndex: Int): OperatorExpressionNode("not", partIndex) {
 
     override fun initialize(context: EvaluationContext) {
         content.initialize(context)
@@ -21,5 +21,5 @@ class NotExpressionNode (val content: ExpressionNode, partIndex: Int): OperatorE
 
     override fun children(): List<ExpressionNode> = listOf(content)
 
-    override fun buildLogicString(): String = "\u00AC ${content.buildLogicString()}"
+    override fun buildLogicString(): String = "\u00AC${content.buildLogicString()}"
 }

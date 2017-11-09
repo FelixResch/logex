@@ -38,11 +38,25 @@ class SimpleExpressionParser : ExpressionParser {
             val closure = context.closures.first()
             context.closures.removeAt(0)
             val closures = replaceClosures(closure, context)
-            println(closure)
+            replaceOperators(closure)
             context.closures.addAll(closures)
         }
         logicExpression.rootExpressionNode = root.resolve()
         return logicExpression
+    }
+
+    private fun replaceOperators(closure: ClosureReference) {
+        val operators = listOf("not", "and", "or")
+        operators.forEach { operator ->
+            var node : Reference? = closure.entryPoint
+            while (node != null) {
+                if (node is OperatorReference && node.operatorType.name == operator) {
+                    node = node.operatorType.build(node, closure)
+                }
+                node = node.next
+            }
+
+        }
     }
 
     private fun link(references: List<Reference>): Reference {

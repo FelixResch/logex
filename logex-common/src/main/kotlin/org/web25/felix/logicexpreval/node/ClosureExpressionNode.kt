@@ -21,5 +21,5 @@ class ClosureExpressionNode(override val partIndex: Int, val content: Expression
 
     override fun children(): List<ExpressionNode> = listOf(content)
 
-    override fun buildLogicString(): String = "( ${content.buildLogicString()} )"
+    override fun buildLogicString(): String = "(${content.buildLogicString()})"
 }

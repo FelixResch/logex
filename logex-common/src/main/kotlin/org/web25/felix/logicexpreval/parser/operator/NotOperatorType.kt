@@ -1,5 +1,6 @@
 package org.web25.felix.logicexpreval.parser.operator
 
+import org.web25.felix.logicexpreval.parser.ref.ClosureReference
 import org.web25.felix.logicexpreval.parser.ref.NotOperationReference
 import org.web25.felix.logicexpreval.parser.ref.OperationReference
 import org.web25.felix.logicexpreval.parser.ref.OperatorReference
@@ -21,8 +22,24 @@ class NotOperatorType : OperatorType {
     override val operatorMatchers: List<String> = listOf("\u00AC", "-not", "!")
 
 
-    override fun build(reference: OperatorReference): OperationReference {
+    override fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference {
         val right = reference.next ?: TODO("Implement proper exception type")
-        return NotOperationReference(right)
+        val result = NotOperationReference(right)
+        val rNext = right.next
+        if(rNext != null) {
+            rNext.before = result
+            result.next = rNext
+            right.next = null
+        }
+        right.next = null
+        val left = reference.before
+        if(left != null) {
+            left.next = result
+            result.before = left
+            reference.before = null
+        } else {
+            enclosing.entryPoint = reference
+        }
+        return result
     }
 }
