@@ -34,3 +34,7 @@ task run(dependsOn: classes, type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     ignoreExitValue(true)
 }
+
+artifactInfo {
+    packageName "org.web25.felix.logex"
+}
