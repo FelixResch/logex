@@ -15,7 +15,11 @@ import org.web25.felix.logicexpreval.parser.lex.symbols.LexicalSymbol
 class SymbolReference(val lexicalSymbol: LexicalSymbol): Reference() {
 
     /**
+     * This symbol should not be called as no [SymbolReference] should be left in the expression after parsing.
+     *
      * @throws RuntimeException as this method should never be invoked on this type of reference
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     override fun resolve(): ExpressionNode {
         throw RuntimeException("This type of Reference should never be resolved!")

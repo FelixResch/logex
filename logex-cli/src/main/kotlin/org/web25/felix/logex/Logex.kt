@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
     println("Starting logex ${LogexCommonInfo.version}")
     SystemHelper.printPlatformInfo()
     SystemHelper.enableUnicode()
-    val logicExpression = LogicExpression.parse(listOf("A -and -not (B -or C) -and (C -or B)"))
+    val logicExpression = LogicExpression.parse(args.toList())
     logicExpression.printExpression()
     ASTPrinter.printAST(logicExpression.rootExpressionNode)
     val result = logicExpression.execute()

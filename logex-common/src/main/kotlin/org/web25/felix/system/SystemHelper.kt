@@ -26,6 +26,11 @@ expect object SystemHelper {
      */
     fun printPlatformInfo()
 
+    /**
+     * Stores a platform logger
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+     */
     val logger: Logger
 }
 

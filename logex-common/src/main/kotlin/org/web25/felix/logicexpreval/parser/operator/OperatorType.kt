@@ -42,6 +42,17 @@ interface OperatorType {
      */
     val operatorMatchers: List<String>
 
+    /**
+     * Replaces an [OperatorReference] with the matching [OperationReference].
+     *
+     * This method is responsible for unlinking the references and linking the new one in.
+     *
+     * @param reference the reference, this operator type has been referenced by
+     * @param enclosing the enclosing closure
+     * @return the generated [OperationReference]
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+     */
     fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference
 
 }

@@ -2,6 +2,16 @@ package org.web25.felix.logicexpreval.parser.ref
 
 import org.web25.felix.logicexpreval.parser.lex.symbols.*
 
+/**
+ * Builds a [Reference] from a [LexicalSymbol].
+ *
+ * This method is used for mapping purposes during parsing.
+ *
+ * @param lexicalSymbol The symbol that should be converted to a [Reference]
+ * @param context The [ParserContext] of the current parsing operation.
+ * @since 1.0.0
+ * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+ */
 fun reference(lexicalSymbol: LexicalSymbol, context: ParserContext) = when {
     lexicalSymbol is BracketLexicalSymbol -> {
         val matching = context.brackets[lexicalSymbol]

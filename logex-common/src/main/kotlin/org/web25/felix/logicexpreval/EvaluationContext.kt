@@ -25,12 +25,16 @@ class EvaluationContext: MutableMap<String, Boolean> by mutableMapOf() {
     /**
      * Adds the name of a variable to the list of known variables.
      *
+     * If a value is already present in the list of variables, this call will do nothing.
+     *
      * @param name The name of the variable
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      * @since 1.0.0
      */
     fun allocateVariable(name: String) {
-        this.variables.add(name)
+        if (!this.variables.contains(name)) {
+            this.variables.add(name)
+        }
     }
 
     /**

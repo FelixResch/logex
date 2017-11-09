@@ -22,6 +22,9 @@ class SimpleExpressionParser : ExpressionParser {
 
     /**
      * A simple lexer that creates a list of symbols.
+     *
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     private val lexer by lazy {
         ExpressionLexerFactory.build()
@@ -49,6 +52,13 @@ class SimpleExpressionParser : ExpressionParser {
         return logicExpression
     }
 
+    /**
+     * Looks for operators in the closure and replaces them with a reference to the specified operator.
+     *
+     * @param closure The closure the operators should be looked in
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+     */
     private fun replaceOperators(closure: ClosureReference) {
         val operators = listOf("not", "and", "or")
         operators.forEach { operator ->
@@ -63,6 +73,14 @@ class SimpleExpressionParser : ExpressionParser {
         }
     }
 
+    /**
+     * Links the references generated.
+     *
+     * @param references a list of references to be linked
+     * @return the first reference in the linked list
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+     */
     private fun link(references: List<Reference>): Reference {
         (0..references.lastIndex).forEach { i ->
             if(i != 0) {
@@ -75,6 +93,15 @@ class SimpleExpressionParser : ExpressionParser {
         return references[0]
     }
 
+    /**
+     * Looks for closures in a closure and returns them.
+     *
+     * @param closureReference the [ClosureReference] that the closures should be looked in
+     * @param context the [ParserContext] for this parsing action
+     * @return the closures found in the passed closure
+     * @since 1.0.0
+     * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
+     */
     private fun replaceClosures(closureReference: ClosureReference, context: ParserContext): List<ClosureReference> {
         var node : Reference = closureReference.entryPoint
         val closures = mutableListOf<ClosureReference>()
