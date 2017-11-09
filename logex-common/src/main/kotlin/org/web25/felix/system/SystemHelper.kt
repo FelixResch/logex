@@ -1,4 +1,4 @@
-package org.web25.felix.logicexpreval
+package org.web25.felix.system
 
 /**
  * Utility class that performs simple platform-dependent tasks.
@@ -25,4 +25,7 @@ expect object SystemHelper {
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     fun printPlatformInfo()
+
+    val logger: Logger
 }
+

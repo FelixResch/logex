@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":logex-jvm:main" external.linked.project.path="$MODULE_DIR$/../../../logex-jvm" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="org.web25.felix" external.system.module.type="sourceSet" external.system.module.version="0.1.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":logex-cli:main" external.linked.project.path="$MODULE_DIR$/../../../logex-cli" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="org.web25.felix" external.system.module.type="sourceSet" external.system.module.version="0.1.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="JVM 1.8" useProjectSettings="false">
-        <implements>logex-common_main</implements>
         <compilerSettings>
           <option name="additionalArguments" value="-Xmulti-platform" />
         </compilerSettings>
         <compilerArguments>
-          <option name="destination" value="$MODULE_DIR$/../../../logex-jvm/build/classes/kotlin/main" />
+          <option name="destination" value="$MODULE_DIR$/../../../logex-cli/build/classes/kotlin/main" />
           <option name="noStdlib" value="true" />
           <option name="noReflect" value="true" />
-          <option name="moduleName" value="logex-jvm" />
+          <option name="moduleName" value="logex-cli" />
           <option name="jvmTarget" value="1.8" />
           <option name="addCompilerBuiltIns" value="true" />
           <option name="loadBuiltInsFromDependencies" value="true" />
@@ -28,19 +27,19 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/../../../logex-jvm/out/production/classes" />
+    <output url="file://$MODULE_DIR$/../../../logex-cli/out/production/classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../logex-jvm/build/generated">
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/build/generated" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../logex-jvm/src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/resources" type="java-resource" />
+    <content url="file://$MODULE_DIR$/../../../logex-cli/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../logex-cli/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../logex-cli/src/main/kotlin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../logex-cli/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.0-rc-39" level="project" />
     <orderEntry type="module" module-name="logex-common_main" />
+    <orderEntry type="module" module-name="logex-jvm_main" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.0-rc-39" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.0-rc-39" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.0-rc-39" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.0-rc-39" level="project" />

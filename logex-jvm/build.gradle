@@ -34,26 +34,6 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task run(dependsOn: classes, type: JavaExec) {
-    if(project.hasProperty('myargs')){
-        args(myargs.split(','))
-    }
-    main = 'org.web25.felix.logicexpreval.LogicExpressionEvaluatorKt'
-    classpath = sourceSets.main.runtimeClasspath
-    ignoreExitValue(true)
-}
-
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title':'Logic Expression Evaluatori',
-                'Implementation-Version':version,
-                'Main-Class': 'org.web25.felix.logicexpreval.LogicExpressionEvaluatorKt'
-    }
-    baseName = project.name
-    from { configurations.compile.collect {it.isDirectory() ? it: zipTree(it)}}
-    with jar
-}
-
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.kotlin

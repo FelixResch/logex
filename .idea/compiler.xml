@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="logex-cli_main" target="1.8" />
+      <module name="logex-cli_test" target="1.8" />
       <module name="logex-common_buildDir" target="1.8" />
       <module name="logex-common_main" target="1.8" />
       <module name="logex-common_test" target="1.8" />

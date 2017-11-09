@@ -8,6 +8,7 @@ import org.web25.felix.logicexpreval.node.value
 import org.web25.felix.logicexpreval.parser.lex.ExpressionLexerFactory
 import org.web25.felix.logicexpreval.parser.lex.symbols.OpeningBracketLexicalSymbol
 import org.web25.felix.logicexpreval.parser.ref.*
+import org.web25.felix.system.SystemHelper
 
 /**
  * A simple, not optimized parser for logical expressions.
@@ -30,6 +31,7 @@ class SimpleExpressionParser : ExpressionParser {
     override fun parse(logicExpression: LogicExpression): LogicExpression {
         logicExpression.rootExpressionNode = and(value("A"), closure(or(value("B"), value("C"))))
         val symbols = lexer.lex(logicExpression.parts)
+        SystemHelper.logger.debug(symbols)
         val context = ParserContext()
         val references = symbols.map { reference(it, context) }
         val root = ImplicitClosureReference(context.closureCounter++, link(references))
@@ -38,7 +40,9 @@ class SimpleExpressionParser : ExpressionParser {
             val closure = context.closures.first()
             context.closures.removeAt(0)
             val closures = replaceClosures(closure, context)
+            SystemHelper.logger.debug(closure)
             replaceOperators(closure)
+            SystemHelper.logger.debug(closure)
             context.closures.addAll(closures)
         }
         logicExpression.rootExpressionNode = root.resolve()
@@ -85,6 +89,9 @@ class SimpleExpressionParser : ExpressionParser {
                     val before = node.before
                     if(before != null) {
                         before.next = closure
+                        closure.before = before
+                    } else {
+                        closureReference.entryPoint = closure
                     }
                     node.before = null
                     val mBefore = matching.before ?: TODO("Implement proper exception here!")
@@ -92,8 +99,10 @@ class SimpleExpressionParser : ExpressionParser {
                     val mNext = matching.next
                     if(mNext != null) {
                         mNext.before = closure
+                        closure.next = mNext
                     }
                     closures.add(closure)
+                    node = closure
                 }
             }
             node = node.next?: break

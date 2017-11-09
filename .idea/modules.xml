@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex.iml" filepath="$PROJECT_DIR$/.idea/modules/logex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-cli.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-cli.iml" group="logex-cli" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-cli/logex-cli_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-cli/logex-cli_main.iml" group="logex-cli" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-cli/logex-cli_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-cli/logex-cli_test.iml" group="logex-cli" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common.iml" group="logex-common" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common_main.iml" group="logex-common" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logex-common/logex-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logex-common/logex-common_test.iml" group="logex-common" />
