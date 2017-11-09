@@ -1,5 +1,8 @@
 package org.web25.felix.logicexpreval.parser.operator
 
+import org.web25.felix.logicexpreval.parser.ref.OperatorReference
+import org.web25.felix.logicexpreval.parser.ref.OperationReference
+
 /**
  * Represents one type of operator.
  *
@@ -37,4 +40,7 @@ interface OperatorType {
      * @since 1.0.0
      */
     val operatorMatchers: List<String>
+
+    fun build(reference: OperatorReference): OperationReference
+
 }

@@ -3,7 +3,7 @@ package org.web25.felix.logicexpreval.parser.ref
 import org.web25.felix.logicexpreval.node.ExpressionNode
 import org.web25.felix.logicexpreval.parser.lex.symbols.OperatorLexicalSymbol
 
-class OperatorReference(lexicalSymbol: OperatorLexicalSymbol): Reference {
+class OperatorReference(lexicalSymbol: OperatorLexicalSymbol): Reference() {
 
     private val operatorType = lexicalSymbol.operatorType
 
@@ -11,5 +11,5 @@ class OperatorReference(lexicalSymbol: OperatorLexicalSymbol): Reference {
         TODO("Intermediary references should not be evaluated!")
     }
 
-    override fun toString(): String = "op:${operatorType.name}"
+    override fun toString(): String = "op:${operatorType.name}${super.toString()}"
 }

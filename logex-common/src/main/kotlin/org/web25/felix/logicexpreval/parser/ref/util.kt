@@ -1,9 +1,6 @@
 package org.web25.felix.logicexpreval.parser.ref
 
-import org.web25.felix.logicexpreval.parser.lex.symbols.BracketLexicalSymbol
-import org.web25.felix.logicexpreval.parser.lex.symbols.LexicalSymbol
-import org.web25.felix.logicexpreval.parser.lex.symbols.OperatorLexicalSymbol
-import org.web25.felix.logicexpreval.parser.lex.symbols.ValueLexicalSymbol
+import org.web25.felix.logicexpreval.parser.lex.symbols.*
 
 fun reference(lexicalSymbol: LexicalSymbol, context: ParserContext) = when {
     lexicalSymbol is BracketLexicalSymbol -> {
@@ -13,6 +10,12 @@ fun reference(lexicalSymbol: LexicalSymbol, context: ParserContext) = when {
         if (matching != null) {
             reference.matching = matching
             matching.matching = reference
+        } else {
+            if(lexicalSymbol is OpeningBracketLexicalSymbol) {
+                context.brackets[lexicalSymbol.closingBracket] = reference
+            } else {
+                TODO("Implement proper exception here")
+            }
         }
         reference
     }

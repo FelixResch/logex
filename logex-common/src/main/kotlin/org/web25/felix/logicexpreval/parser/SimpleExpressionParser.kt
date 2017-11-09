@@ -6,9 +6,8 @@ import org.web25.felix.logicexpreval.node.closure
 import org.web25.felix.logicexpreval.node.or
 import org.web25.felix.logicexpreval.node.value
 import org.web25.felix.logicexpreval.parser.lex.ExpressionLexerFactory
-import org.web25.felix.logicexpreval.parser.ref.ParserContext
-import org.web25.felix.logicexpreval.parser.ref.Reference
-import org.web25.felix.logicexpreval.parser.ref.reference
+import org.web25.felix.logicexpreval.parser.lex.symbols.OpeningBracketLexicalSymbol
+import org.web25.felix.logicexpreval.parser.ref.*
 
 /**
  * A simple, not optimized parser for logical expressions.
@@ -33,8 +32,15 @@ class SimpleExpressionParser : ExpressionParser {
         val symbols = lexer.lex(logicExpression.parts)
         val context = ParserContext()
         val references = symbols.map { reference(it, context) }
-        var root = link(references)
-
+        val root = ImplicitClosureReference(context.closureCounter++, link(references))
+        context.closures.add(root)
+        while (context.closures.isNotEmpty()) {
+            val closure = context.closures.first()
+            context.closures.removeAt(0)
+            val closures = replaceClosures(closure, context)
+            println(closure)
+            context.closures.addAll(closures)
+        }
         logicExpression.rootExpressionNode = root.resolve()
         return logicExpression
     }
@@ -49,6 +55,36 @@ class SimpleExpressionParser : ExpressionParser {
             }
         }
         return references[0]
+    }
+
+    private fun replaceClosures(closureReference: ClosureReference, context: ParserContext): List<ClosureReference> {
+        var node : Reference = closureReference.entryPoint
+        val closures = mutableListOf<ClosureReference>()
+        while (node.next != null) {
+            if(node is BracketReference) {
+                if (node.lexicalSymbol is OpeningBracketLexicalSymbol) {
+                    val matching = node.matching
+                    val next = node.next ?: TODO("Implement proper exception here!")
+                    val closure = ClosureReference(context.closureCounter++, next)
+                    next.before = null
+                    node.next = null
+                    val before = node.before
+                    if(before != null) {
+                        before.next = closure
+                    }
+                    node.before = null
+                    val mBefore = matching.before ?: TODO("Implement proper exception here!")
+                    mBefore.next = null
+                    val mNext = matching.next
+                    if(mNext != null) {
+                        mNext.before = closure
+                    }
+                    closures.add(closure)
+                }
+            }
+            node = node.next?: break
+        }
+        return closures
     }
 
 }

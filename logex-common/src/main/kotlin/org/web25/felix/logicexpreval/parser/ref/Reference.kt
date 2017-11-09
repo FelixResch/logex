@@ -14,4 +14,13 @@ abstract class Reference {
 
     var next: Reference? = null
     var before: Reference? = null
+
+    override fun toString(): String {
+        val next = this.next
+        if(next != null) {
+            return " $next"
+        } else {
+            return ""
+        }
+    }
 }
