@@ -49,7 +49,7 @@ dokka {
 }
 
 artifactInfo {
-    packageName 'org.web25.felix.logicexpreval'
+    packageName 'org.web25.felix.logex'
 }
 
 sourceSets {

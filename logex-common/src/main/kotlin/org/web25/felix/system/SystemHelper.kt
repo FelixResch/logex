@@ -32,5 +32,7 @@ expect object SystemHelper {
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     val logger: Logger
+
+    fun objectId(any: Any): String
 }
 

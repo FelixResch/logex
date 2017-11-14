@@ -1,8 +1,8 @@
 package org.web25.felix.logex
 
-import org.web25.felix.logicexpreval.ASTPrinter
-import org.web25.felix.logicexpreval.LogexCommonInfo
-import org.web25.felix.logicexpreval.LogicExpression
+import org.web25.felix.logex.ASTPrinter
+import org.web25.felix.logex.LogexCommonInfo
+import org.web25.felix.logex.LogicExpression
 import org.web25.felix.system.SystemHelper
 
 fun main(args: Array<String>) {

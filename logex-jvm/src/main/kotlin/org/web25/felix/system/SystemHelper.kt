@@ -1,6 +1,6 @@
 package org.web25.felix.system
 
-import org.web25.felix.logicexpreval.LogexJvmInfo
+import org.web25.felix.logex.LogexJvmInfo
 
 actual object SystemHelper {
     actual fun enableUnicode() {
@@ -13,5 +13,9 @@ actual object SystemHelper {
 
     actual val logger: Logger by lazy {
         JvmLogger(debug = false)
+    }
+
+    actual fun objectId(any: Any): String {
+        return System.identityHashCode(any).toString(16)
     }
 }
