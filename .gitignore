@@ -189,3 +189,4 @@ gradle-app.setting
 
 /logex-jvm/build/
 /logex-common/build/
+/logex-cli/build/
