@@ -1,27 +1,45 @@
-package org.web25.felix.logex.parser.lex
+package org.web25.felix.logex.parser
 
-import org.web25.felix.logex.parser.operator.OperatorType
 import org.web25.felix.logex.parser.lex.symbols.CharacterLexicalSymbol
 import org.web25.felix.logex.parser.lex.symbols.LexicalSymbol
 import org.web25.felix.logex.parser.lex.symbols.OperatorLexicalSymbol
+import org.web25.felix.logex.parser.operator.*
+import org.web25.felix.system.SystemHelper
 
-class OperatorFinder() {
+object OperatorFinder {
 
     private val operatorTypes: MutableList<OperatorType> = mutableListOf()
     private val lengthIndex = mutableMapOf<Int, MutableList<Pair<String, OperatorType>>>()
     private var maxOperatorLength: Int = 0
     private val operatorCache = mutableMapOf<Int, MutableList<Pair<String, OperatorType>>>()
+    private var operatorOrder: Map<Int, List<OperatorType>> = mutableMapOf()
 
-    infix fun load(operatorType: OperatorType) {
-        this.operatorTypes.add(operatorType)
+    val operators: Map<Int, List<OperatorType>>
+    get() {
+        return operatorOrder
     }
 
-    constructor(block: OperatorFinder.() -> Unit): this() {
-        this.block()
-        this.buildOperatorIndex()
+    fun load(vararg operatorType: OperatorType) {
+        operatorTypes.addAll(operatorType)
     }
 
-    protected fun buildOperatorIndex() {
+    init {
+        load(
+                NotOperatorType,
+                OrOperatorType,
+                NorOperatorType,
+                AndOperatorType,
+                NandOperatorType,
+                XorOperatorType,
+                ImplicationOperatorType,
+                EquivalenceOperatorType
+        )
+        buildOperatorIndex()
+    }
+
+
+
+    private fun buildOperatorIndex() {
         lengthIndex.clear()
         operatorCache.clear()
         operatorTypes.forEach { operatorType ->
@@ -36,6 +54,14 @@ class OperatorFinder() {
                     lengthIndex[length] = list
                 }
             }
+        }
+        printIndex()
+        operatorOrder = operatorTypes.groupBy { it.priority }
+    }
+
+    private fun printIndex() {
+        lengthIndex.forEach { (key, value) ->
+            SystemHelper.logger.debug("$key: ${value.map { it.first }}")
         }
     }
 
@@ -52,8 +78,8 @@ class OperatorFinder() {
             } else {
                 val possibleMatchers = matchers.filter { it.first[0] == remainingCharacterSymbol.glyphs[i] }
                 if (possibleMatchers.isNotEmpty()) {
-                    for (j in i..remainingCharacterSymbol.glyphs.lastIndex) {
-                        val m = matchers.filter { it.first.length >= j - i }.filter {
+                    for (j in i..remainingCharacterSymbol.glyphs.lastIndex + 1) {
+                        val m = possibleMatchers.filter { it.first.length >= j - i }.filter {
                             it.first.subSequence(0, j - i).forEachIndexed { index, char ->
                                 if (char != remainingCharacterSymbol.glyphs[index + i]) {
                                     return@filter false

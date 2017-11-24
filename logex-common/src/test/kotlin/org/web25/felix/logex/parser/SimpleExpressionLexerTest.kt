@@ -19,10 +19,10 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A -and (B -or C)"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 7, 7),
                 ValueLexicalSymbol(listOf('B'), 8, 8),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType),
                 ValueLexicalSymbol(listOf('C'), 14, 14),
                 ClosingBracketLexicalSymbol(listOf(')'), 15, 15)
         ), lexicalSymbols)
@@ -34,10 +34,10 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A", "-and", "(", "B", "-or", "C", ")"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 7, 7),
                 ValueLexicalSymbol(listOf('B'), 8, 8),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType),
                 ValueLexicalSymbol(listOf('C'), 14, 14),
                 ClosingBracketLexicalSymbol(listOf(')'), 15, 15)
         ), lexicalSymbols)
@@ -49,10 +49,10 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A", "-and", "(B", "-or", "C)"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 7, 7),
                 ValueLexicalSymbol(listOf('B'), 8, 8),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType),
                 ValueLexicalSymbol(listOf('C'), 14, 14),
                 ClosingBracketLexicalSymbol(listOf(')'), 15, 15)
         ), lexicalSymbols)
@@ -64,10 +64,10 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A-and(B-orC)"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 2, 5, AndOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 7, 7),
                 ValueLexicalSymbol(listOf('B'), 8, 8),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 10, 12, OrOperatorType),
                 ValueLexicalSymbol(listOf('C'), 14, 14),
                 ClosingBracketLexicalSymbol(listOf(')'), 15, 15)
         ), lexicalSymbols)
@@ -79,17 +79,17 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A -or B -and C -and ( F -or (E -and D ))"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 0, 0, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 0, 0, OrOperatorType),
                 ValueLexicalSymbol(listOf('B'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType),
                 ValueLexicalSymbol(listOf('C'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 0, 0),
                 ValueLexicalSymbol(listOf('F'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 0, 0, OrOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'o', 'r'), 0, 0, OrOperatorType),
                 OpeningBracketLexicalSymbol(listOf('('), 0, 0),
                 ValueLexicalSymbol(listOf('E'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType),
                 ValueLexicalSymbol(listOf('D'), 0, 0),
                 ClosingBracketLexicalSymbol(listOf(')'), 0, 0),
                 ClosingBracketLexicalSymbol(listOf(')'), 0, 0)
@@ -102,7 +102,7 @@ class SimpleExpressionLexerTest {
         val lexicalSymbols = lexer.lex(listOf("A", "-and", "B"))
         assertEquals(listOf(
                 ValueLexicalSymbol(listOf('A'), 0, 0),
-                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType()),
+                OperatorLexicalSymbol(listOf('-', 'a', 'n', 'd'), 0, 0, AndOperatorType),
                 ValueLexicalSymbol(listOf('B'), 0, 0)
         ), lexicalSymbols)
     }

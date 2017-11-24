@@ -13,7 +13,7 @@ import org.web25.felix.logex.parser.ref.OrOperationReference
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  * @since 1.0.0
  */
-class OrOperatorType : OperatorType {
+object OrOperatorType : OperatorType {
 
     override val unicodeRepresentation: Char = '\u2228'
 
@@ -51,5 +51,7 @@ class OrOperatorType : OperatorType {
 
         return result
     }
+
+    override val priority: Int = 20
 
 }

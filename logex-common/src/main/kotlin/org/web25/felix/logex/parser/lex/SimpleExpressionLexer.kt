@@ -1,21 +1,19 @@
 package org.web25.felix.logex.parser.lex
 
+import org.web25.felix.logex.parser.OperatorFinder
 import org.web25.felix.logex.parser.lex.symbols.*
-import org.web25.felix.logex.parser.operator.*
+import org.web25.felix.system.SystemHelper
 
 class SimpleExpressionLexer : ExpressionLexer {
 
-    val operators = OperatorFinder {
-        this load NotOperatorType()
-        this load AndOperatorType()
-        this load OrOperatorType()
-    }
-
     override fun lex(parts: List<String>): List<LexicalSymbol> {
+        SystemHelper.logger.debug("Lexing:")
         var symbols = buildSymbols(parts)
         symbols = findBrackets(symbols)
         validateBrackets(symbols)
+        SystemHelper.logger.debug(symbols)
         symbols = findOperators(symbols)
+        SystemHelper.logger.debug(symbols)
         symbols = findValues(symbols)
         return symbols.filterNot { it is WhitespaceLexicalSymbol }
     }
@@ -84,7 +82,7 @@ class SimpleExpressionLexer : ExpressionLexer {
         val simplifiedSymbols = simplify(symbols)
         return simplifiedSymbols.flatMap { symbol ->
             if(symbol is CharacterLexicalSymbol) {
-                operators.findAndSplit(symbol)
+                OperatorFinder.findAndSplit(symbol)
             } else {
                 listOf(symbol)
             }

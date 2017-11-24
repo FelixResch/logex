@@ -74,6 +74,12 @@ class LogicExpression private constructor(val parts: List<String>) {
          * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
          */
         fun parse(part: String) = parse(listOf(part))
+
+        fun create(expressionNode: ExpressionNode): LogicExpression {
+            val logicExpression = LogicExpression(parts = listOf())
+            logicExpression.rootExpressionNode = expressionNode
+            return logicExpression
+        }
     }
 
     /**

@@ -1,25 +1,26 @@
 package org.web25.felix.logex.parser.operator
 
-import org.web25.felix.logex.parser.ref.AndOperationReference
 import org.web25.felix.logex.parser.ref.ClosureReference
 import org.web25.felix.logex.parser.ref.OperationReference
 import org.web25.felix.logex.parser.ref.OperatorReference
+import org.web25.felix.logex.parser.ref.NorOperationReference
 
 /**
- * Operator type for the **AND** operator.
+ * Operator type for the **NOR** operator.
  *
- * This operator will match with the following glyphs/glyph groups: `∧`, `-and`, `&`.
+ * This operator will match with the following glyphs/glyph groups: `∨`, `-nor`, `!|`.
  *
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  * @since 1.0.0
  */
-object AndOperatorType : OperatorType {
+object NorOperatorType : OperatorType {
 
-    override val unicodeRepresentation: Char = '\u2227'
+    override val unicodeRepresentation: Char = '\u2191'
 
-    override val name: String = "and"
+    override val name: String = "nor"
 
-    override val operatorMatchers: List<String> = listOf("\u2227", "&", "-and")
+    override val operatorMatchers: List<String> = listOf("\u2191", "!|", "-nor")
+
 
     override fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference {
         val left = reference.before
@@ -27,8 +28,7 @@ object AndOperatorType : OperatorType {
         if(left == null || right == null) {
             TODO("Implement proper exception type")
         }
-
-        val result = AndOperationReference(left, right)
+        val result = NorOperationReference(left, right)
 
         val lBefore = left.before
         if(lBefore != null) {
@@ -52,5 +52,6 @@ object AndOperatorType : OperatorType {
         return result
     }
 
-    override val priority: Int = 10
+    override val priority: Int = 20
+
 }

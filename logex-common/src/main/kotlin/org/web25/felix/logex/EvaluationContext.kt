@@ -69,7 +69,7 @@ class EvaluationContext: MutableMap<String, Boolean> by mutableMapOf() {
             for (j in 0..variables.lastIndex) {
                 val pow = size(j)
                 if(!(i and pow == pow)) {
-                    result[i][j] = true
+                    result[result.lastIndex - i][j] = true
                 }
             }
         }

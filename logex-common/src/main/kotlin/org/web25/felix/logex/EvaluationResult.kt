@@ -81,11 +81,11 @@ class EvaluationResult(evaluationContext: EvaluationContext) {
             result.variation.forEachIndexed { index, it ->
                 print("\u2502 ")
                 (2..headerLength[index]).forEach { print(" ") }
-                print(if(it) "T" else "F")
+                print(if(it) "\u2713" else "\u2717")
                 print(" ")
             }
             print("\u2551 ")
-            print(if(result.result) "T" else "F")
+            print(if(result.result) "\u2713" else "\u2717")
             println(" \u2502")
         }
 
@@ -102,6 +102,14 @@ class EvaluationResult(evaluationContext: EvaluationContext) {
             print("\u2500")
         }
         println("\u2568\u2500\u2500\u2500\u2518")
+    }
+
+    fun forEach(block: (EvaluationLineResult) -> Unit) {
+        results.forEach(block)
+    }
+
+    fun forEachIndexed(block: (Int, EvaluationLineResult) -> Unit) {
+        results.forEachIndexed(block)
     }
 
 }

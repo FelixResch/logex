@@ -6,6 +6,13 @@ apply plugin: 'kotlin-platform-jvm'
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile project(":logex-jvm")
+    // https://mvnrepository.com/artifact/info.picocli/picocli
+    compile group: 'info.picocli', name: 'picocli', version: picocli_version
+
+}
+
+buildscript {
+    ext.picocli_version = "2.0.3"
 }
 
 compileKotlin {

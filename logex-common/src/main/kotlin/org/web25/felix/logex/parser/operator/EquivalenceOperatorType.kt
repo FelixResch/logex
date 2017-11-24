@@ -1,25 +1,17 @@
 package org.web25.felix.logex.parser.operator
 
-import org.web25.felix.logex.parser.ref.AndOperationReference
 import org.web25.felix.logex.parser.ref.ClosureReference
+import org.web25.felix.logex.parser.ref.EquivalenceOperationReference
 import org.web25.felix.logex.parser.ref.OperationReference
 import org.web25.felix.logex.parser.ref.OperatorReference
 
-/**
- * Operator type for the **AND** operator.
- *
- * This operator will match with the following glyphs/glyph groups: `∧`, `-and`, `&`.
- *
- * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
- * @since 1.0.0
- */
-object AndOperatorType : OperatorType {
+object EquivalenceOperatorType : OperatorType {
 
-    override val unicodeRepresentation: Char = '\u2227'
+    override val unicodeRepresentation: Char = '\u21D4'
 
-    override val name: String = "and"
+    override val name: String = "eq"
 
-    override val operatorMatchers: List<String> = listOf("\u2227", "&", "-and")
+    override val operatorMatchers: List<String> = listOf("-eq", "=", "-equal", "-equals", "\u21D4")
 
     override fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference {
         val left = reference.before
@@ -28,7 +20,7 @@ object AndOperatorType : OperatorType {
             TODO("Implement proper exception type")
         }
 
-        val result = AndOperationReference(left, right)
+        val result = EquivalenceOperationReference(left, right)
 
         val lBefore = left.before
         if(lBefore != null) {
@@ -52,5 +44,5 @@ object AndOperatorType : OperatorType {
         return result
     }
 
-    override val priority: Int = 10
+    override val priority: Int = 50
 }

@@ -7,4 +7,5 @@ package org.web25.felix.logex.parser.ref
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  */
 abstract class OperationReference: Reference() {
+
 }

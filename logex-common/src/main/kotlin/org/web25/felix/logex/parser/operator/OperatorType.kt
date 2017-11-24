@@ -55,4 +55,6 @@ interface OperatorType {
      */
     fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference
 
+    val priority: Int
+
 }

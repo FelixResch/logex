@@ -34,5 +34,7 @@ expect object SystemHelper {
     val logger: Logger
 
     fun objectId(any: Any): String
+
+    fun enableDebug()
 }
 

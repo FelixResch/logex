@@ -27,13 +27,13 @@ class EvaluationContextTest {
         variations.forEach {
             assertEquals(it.size, 2)
         }
-        assertTrue(variations[0][0])
-        assertTrue(variations[0][1])
-        assertFalse(variations[1][0])
-        assertTrue(variations[1][1])
-        assertTrue(variations[2][0])
-        assertFalse(variations[2][1])
-        assertFalse(variations[3][0])
-        assertFalse(variations[3][1])
+        assertTrue(variations[3][0])
+        assertTrue(variations[3][1])
+        assertFalse(variations[2][0])
+        assertTrue(variations[2][1])
+        assertTrue(variations[1][0])
+        assertFalse(variations[1][1])
+        assertFalse(variations[0][0])
+        assertFalse(variations[0][1])
     }
 }

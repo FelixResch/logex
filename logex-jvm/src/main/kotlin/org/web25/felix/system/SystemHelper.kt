@@ -1,6 +1,7 @@
 package org.web25.felix.system
 
 import org.web25.felix.logex.LogexJvmInfo
+import kotlin.math.log
 
 actual object SystemHelper {
     actual fun enableUnicode() {
@@ -17,5 +18,9 @@ actual object SystemHelper {
 
     actual fun objectId(any: Any): String {
         return System.identityHashCode(any).toString(16)
+    }
+
+    actual fun enableDebug() {
+        (logger as JvmLogger).debug = true
     }
 }

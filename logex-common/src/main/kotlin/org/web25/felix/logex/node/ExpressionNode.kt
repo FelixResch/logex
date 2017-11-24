@@ -59,5 +59,7 @@ interface ExpressionNode {
      * @return a unicode representation of this logic expression.
      */
     fun buildLogicString(): String
+
+    operator fun plus(other: ExpressionNode): List<ExpressionNode> = mutableListOf(this, other)
 }
 

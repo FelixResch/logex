@@ -59,8 +59,23 @@ class SimpleExpressionParser : ExpressionParser {
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     private fun replaceOperators(closure: ClosureReference) {
-        val operators = listOf("not", "and", "or")
-        operators.forEach { operator ->
+        //val operators = listOf("not", "and", "or", "xor", "impl", "eq")    //TODO add option to derive this values from [OperatorFinder]
+        val ops = OperatorFinder.operators
+        for (weight in ops.keys.sorted()) {
+            val currentOps = ops[weight]?: continue
+            SystemHelper.logger.debug(weight.toString() + ": " + currentOps)
+            var node : Reference? = closure.entryPoint
+            while (node != null) {
+                if(node is OperatorReference) {
+                    SystemHelper.logger.debug(node.operatorType)
+                }
+                if (node is OperatorReference && node.operatorType in currentOps) {
+                    node = node.operatorType.build(node, closure)
+                }
+                node = node.next
+            }
+        }
+        /*operators.forEach { operator ->
             var node : Reference? = closure.entryPoint
             while (node != null) {
                 if (node is OperatorReference && node.operatorType.name == operator) {
@@ -69,7 +84,7 @@ class SimpleExpressionParser : ExpressionParser {
                 node = node.next
             }
 
-        }
+        }*/
     }
 
     /**

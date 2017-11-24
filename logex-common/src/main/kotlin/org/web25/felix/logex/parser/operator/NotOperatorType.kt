@@ -13,7 +13,7 @@ import org.web25.felix.logex.parser.ref.OperatorReference
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  * @since 1.0.0
  */
-class NotOperatorType : OperatorType {
+object NotOperatorType : OperatorType {
 
     override val unicodeRepresentation: Char = '\u00AC'
 
@@ -42,4 +42,6 @@ class NotOperatorType : OperatorType {
         }
         return result
     }
+
+    override val priority: Int = 5
 }

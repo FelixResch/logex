@@ -17,7 +17,7 @@ class NotExpressionNode (val content: ExpressionNode, partIndex: Int): OperatorE
         content.initialize(context)
     }
 
-    override fun evaluate(context: EvaluationContext): Boolean = content.evaluate(context)
+    override fun evaluate(context: EvaluationContext): Boolean = !content.evaluate(context)
 
     override fun children(): List<ExpressionNode> = listOf(content)
 

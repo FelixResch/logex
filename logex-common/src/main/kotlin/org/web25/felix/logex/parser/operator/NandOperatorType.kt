@@ -1,25 +1,25 @@
 package org.web25.felix.logex.parser.operator
 
-import org.web25.felix.logex.parser.ref.AndOperationReference
+import org.web25.felix.logex.parser.ref.NandOperationReference
 import org.web25.felix.logex.parser.ref.ClosureReference
 import org.web25.felix.logex.parser.ref.OperationReference
 import org.web25.felix.logex.parser.ref.OperatorReference
 
 /**
- * Operator type for the **AND** operator.
+ * Operator type for the **NAND** operator.
  *
- * This operator will match with the following glyphs/glyph groups: `∧`, `-and`, `&`.
+ * This operator will match with the following glyphs/glyph groups: `∧`, `-nand`, `!&`.
  *
  * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
  * @since 1.0.0
  */
-object AndOperatorType : OperatorType {
+object NandOperatorType : OperatorType {
 
-    override val unicodeRepresentation: Char = '\u2227'
+    override val unicodeRepresentation: Char = '\u2193'
 
-    override val name: String = "and"
+    override val name: String = "nand"
 
-    override val operatorMatchers: List<String> = listOf("\u2227", "&", "-and")
+    override val operatorMatchers: List<String> = listOf("\u2193", "!&", "-nand")
 
     override fun build(reference: OperatorReference, enclosing: ClosureReference): OperationReference {
         val left = reference.before
@@ -28,7 +28,7 @@ object AndOperatorType : OperatorType {
             TODO("Implement proper exception type")
         }
 
-        val result = AndOperationReference(left, right)
+        val result = NandOperationReference(left, right)
 
         val lBefore = left.before
         if(lBefore != null) {
