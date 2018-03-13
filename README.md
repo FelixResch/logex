@@ -32,6 +32,32 @@ Operators
 
 For CLI usage, the use of the *Short Syntax* is probably best, output of a logix expression is always in Unicode representation.
 
+Build
+---
+
+To build this program you can either use the gradle distribution distributed with this service, or use your own gradel implementation.
+
+If you want to use the packaged gradle distribution replace all occurences of `gradle` with `./gradlew` (Linux/Unixoids) or `gradlew.bat` (Windows).
+
+```bash
+gradle generateArtifactInfoClass
+gradle logex-cli:fatJar
+```
+
+You can then use the generated jar in `logex-cli/build/libs/` to run logex.
+
+```bash
+java -jar [path-to-jar] [arguments] 
+```
+
+To simply call logex you can create a script file in your path. For systems that use `bash` you can use a script like this to run logex directly from the command line. Please note that java needs to be on your path as well.
+
+```bash
+#!/usr/bin/env bash
+
+java -jar (path-to-jar) "$@"
+```
+
 Roadmap
 --- 
 

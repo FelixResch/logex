@@ -33,7 +33,7 @@ task fatJar(type: Jar) {
     with jar
 }
 
-task run(dependsOn: classes, type: JavaExec) {
+task run(dependsOn: [classes, 'logex-jvm:buildArtifactInfoClass', 'logex-common:buildArtifactInfoClass'], type: JavaExec) {
     if(project.hasProperty('myargs')){
         args(myargs.split(','))
     }
