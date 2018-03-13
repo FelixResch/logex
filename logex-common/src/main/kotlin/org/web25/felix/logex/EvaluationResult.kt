@@ -1,5 +1,7 @@
 package org.web25.felix.logex
 
+import org.web25.felix.logex.display.ResultDisplay
+
 /**
  * Stores the result of an evaluation of a logical expression.
  *
@@ -41,67 +43,11 @@ class EvaluationResult(evaluationContext: EvaluationContext) {
      * Could be replaced by a more advanced tool that creates tables either in ASCII or in Unicode.
      *
      * @since 1.0.0
+     * @param resultDisplay the [ResultDisplay] that should be used to print the result
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
-    fun print() {
-        val headerLength = valuesNames.map { it.length }
-
-        //TOP line
-        print("\u250c")
-        headerLength.forEachIndexed { index, length ->
-            if(index == 0) {
-                print("\u2500")
-            } else {
-                print("\u252c\u2500")
-            }
-            (1..length).forEach { print("\u2500") }
-            print("\u2500")
-        }
-        println("\u2565\u2500\u2500\u2500\u2510")
-
-        valuesNames.forEach { print("\u2502 $it ") }
-        println("\u2551 Q \u2502")
-
-        //Separator line
-
-        print("\u251c")
-        headerLength.forEachIndexed { index, length ->
-            if(index == 0) {
-                print("\u2500")
-            } else {
-                print("\u253c\u2500")
-            }
-            (1..length).forEach { print("\u2500") }
-            print("\u2500")
-        }
-        println("\u256B\u2500\u2500\u2500\u2524")
-
-
-        results.forEach { result ->
-            result.variation.forEachIndexed { index, it ->
-                print("\u2502 ")
-                (2..headerLength[index]).forEach { print(" ") }
-                print(if(it) "\u2713" else "\u2717")
-                print(" ")
-            }
-            print("\u2551 ")
-            print(if(result.result) "\u2713" else "\u2717")
-            println(" \u2502")
-        }
-
-        //BOTTOM line
-
-        print("\u2514")
-        headerLength.forEachIndexed { index, length ->
-            if(index == 0) {
-                print("\u2500")
-            } else {
-                print("\u2534\u2500")
-            }
-            (1..length).forEach { print("\u2500") }
-            print("\u2500")
-        }
-        println("\u2568\u2500\u2500\u2500\u2518")
+    fun print(resultDisplay: ResultDisplay = LogexPlatformDefault.defaultResultDisplay()) {
+        resultDisplay.display(this)
     }
 
     fun forEach(block: (EvaluationLineResult) -> Unit) {
