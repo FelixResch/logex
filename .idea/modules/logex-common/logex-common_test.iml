@@ -5,6 +5,8 @@
       <configuration version="3" platform="Common (experimental) " useProjectSettings="false">
         <compilerSettings />
         <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../logex-common/build/classes/kotlin/test" />
+          <option name="classpath" value="$MODULE_DIR$/../../../logex-common/build/classes/java/main:/home/felix/IdeaProjects/logic-expr-evaluator/logex-common/build/classes/kotlin/main:/home/felix/IdeaProjects/logic-expr-evaluator/logex-common/build/resources/main:/home/felix/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-common/1.2.0-rc-39/d3316595d0d1054dfbc58c46d75a040c04fbc740/kotlin-test-common-1.2.0-rc-39.jar:/home/felix/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-annotations-common/1.2.0-rc-39/21683f40d6ed71f43a94ff8e2a907d6c04a685a3/kotlin-test-annotations-common-1.2.0-rc-39.jar:/home/felix/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.0-rc-39/c1aa40cde718f9053f6e842434d01ef95dc342fe/kotlin-stdlib-common-1.2.0-rc-39.jar:/home/felix/IdeaProjects/logic-expr-evaluator/logex-common/build/classes/kotlin/main" />
           <option name="languageVersion" value="1.2" />
           <option name="apiVersion" value="1.2" />
           <option name="pluginOptions">
@@ -24,7 +26,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/test/kotlin" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/test/resources" type="java-test-resource" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="logex-common_main" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-common:1.2.0-rc-39" level="project" />

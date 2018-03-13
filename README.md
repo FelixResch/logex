@@ -24,8 +24,8 @@ Operators
 | Not | **NOT** A | `¬` | `!` | `-not` |
 | And | `A` **AND** `B` | `∧` | `&` | `-and` |
 | Nand | `¬ (A ∧ B)` | `↓` | `!&` | `-nand` |
-| Or | `A` **OR** `B` | `∨` | `|` | `-or` |
-| Nor | `¬ (A ∨ B)` | `↑` | `!|` | `-nor` |
+| Or | `A` **OR** `B` | `∨` | &verbar; | `-or` |
+| Nor | `¬ (A ∨ B)` | `↑` | `!`&verbar; | `-nor` |
 | Xor | `A` **exclusive or** `B` | `⊗` | | `-xor` |
 | Implication | `A` **implies** `B` | `⇒` | `=>`, `->` | `-im`, `-impl`, `-implies`, `-implication` |
 | Equivalence | `A` **equivalent** `B` | `⇔` | `=` | `-eq`, `-equal`, `-equals` |
