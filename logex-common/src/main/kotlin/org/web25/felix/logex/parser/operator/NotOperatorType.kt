@@ -38,7 +38,7 @@ object NotOperatorType : OperatorType {
             result.before = left
             reference.before = null
         } else {
-            enclosing.entryPoint = reference
+            enclosing.entryPoint = result
         }
         return result
     }

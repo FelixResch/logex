@@ -14,5 +14,5 @@ class ImplicitClosureReference(id: Int, entryPoint: Reference) : ClosureReferenc
 
     override fun resolve(): ExpressionNode = entryPoint.resolve()
 
-    override fun toString(): String = "root:$entryPoint"
+    override fun toString(): String = "root:($entryPoint)"
 }

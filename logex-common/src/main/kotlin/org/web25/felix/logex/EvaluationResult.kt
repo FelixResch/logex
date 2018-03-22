@@ -58,4 +58,10 @@ class EvaluationResult(evaluationContext: EvaluationContext) {
         results.forEachIndexed(block)
     }
 
+    fun toBooleanArray(): BooleanArray {
+        return BooleanArray(results.size) {index ->
+            results[index].result
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package org.web25.felix.logex
 
+import org.web25.felix.logex.display.AsciiPrintDisplay
 import org.web25.felix.logex.node.and
 import org.web25.felix.logex.node.not
 import org.web25.felix.logex.node.value
@@ -10,36 +11,26 @@ import kotlin.test.assertTrue
 
 class LogicExpressionTest {
 
-    @Test
-    fun test() {
-        val logicExpression = LogicExpression.parse(listOf("a", "-and", "b"))
-        assertEquals(listOf("a", "-and", "b"), logicExpression.parts)
-
-    }
 
     @Test
     fun testMultipleBrackets() {
         val logicExpression = LogicExpression.parse("A -and -not (B -or C) -or (D -or E -and (A -or -not B))")
         val result = logicExpression.execute()
-        //result.print()
+        //result.print(AsciiPrintDisplay)
     }
 
     @Test
     fun testTautology() {
-        val logicExpression = LogicExpression.parse("A -or -not A")
-        val result = logicExpression.execute()
-        result.forEach {
-            assertTrue(it.result)
-        }
+        ExpressionTestHelper
+                .test("A -or -not A",
+                        ExpressionTestHelper.tautology(2))
     }
 
     @Test
     fun testKontradiction() {
-        val logicExpression = LogicExpression.parse("A -and -not A")
-        val result = logicExpression.execute()
-        result.forEach {
-            assertFalse(it.result)
-        }
+        ExpressionTestHelper
+                .test("A -and -not A",
+                        ExpressionTestHelper.contradiction(2))
     }
 
     @Test
@@ -53,5 +44,41 @@ class LogicExpressionTest {
                 assertTrue(lineResult.result)
             }
         }
+    }
+
+    @Test
+    fun testComplexExpression() {
+        ExpressionTestHelper
+                .test("(-not A -and -not B) -or (A -and B)",
+                        booleanArrayOf(
+                                true,
+                                false,
+                                false,
+                                true
+                        )
+                )
+    }
+
+    @Test
+    fun testExpr01() {
+        ExpressionTestHelper
+                .test("((B -eq A) -and (-not A -impl B)) -eq (A -and B)",
+                        ExpressionTestHelper.tautology(4))
+    }
+
+    @Test
+    fun testExpr02() {
+        ExpressionTestHelper
+                .test("((R -or B) -and (R -impl (G -or -not B))) -and (-not B -impl -not R)",
+                        booleanArrayOf(
+                                false,
+                                false,
+                                true,
+                                true,
+                                false,
+                                false,
+                                false,
+                                true
+                        ))
     }
 }
