@@ -59,7 +59,6 @@ class SimpleExpressionParser : ExpressionParser {
      * @author Felix Resch <[felix.resch@web25.org](mailto:felix.resch@web25.org)>
      */
     private fun replaceOperators(closure: ClosureReference) {
-        //val operators = listOf("not", "and", "or", "xor", "impl", "eq")    //TODO add option to derive this values from [OperatorFinder]
         val ops = OperatorFinder.operators
         for (weight in ops.keys.sorted()) {
             val currentOps = ops[weight]?: continue

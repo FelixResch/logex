@@ -36,6 +36,9 @@ class Logex : Runnable {
     @CommandLine.Option(names = ["-s", "--silent"], description = ["Only print the table"])
     val silent: Boolean = false
 
+    @CommandLine.Option(names = ["-f", "--output-format", "--output-style"], description = ["Select the format, in which the table should be printed"])
+    val outputStyle: OutputStyle = OutputStyle.UNICODE_SIMPLE;
+
     override fun run() {
         if (versionRequested) {
             println("logex common core version: ${LogexCommonInfo.version}")
@@ -45,13 +48,13 @@ class Logex : Runnable {
         SystemHelper.enableUnicode()
         if (printDebug)
             SystemHelper.enableDebug()
-        val logicExpression = LogicExpression.parse(listOf("A", "-and", "B", "-nor", "C"))
+        val logicExpression = LogicExpression.parse(listOf("-not A -and B"))
         if (!silent)
             logicExpression.printExpression()
         if (!silent && !suppressAct)
             ASTPrinter.printAST(logicExpression.rootExpressionNode)
         val result = logicExpression.execute()
-        result.print()
+        result.print(outputStyle.resultDisplay)
     }
 
 

@@ -50,7 +50,7 @@ object PrintDisplay : ResultDisplay {
             }
             print("\u2551 ")
             print(if(evaluationLineResult.result) "\u2713" else "\u2717")
-            println("\u2502")
+            println(" \u2502")
         }
 
         //BOTTOM line
