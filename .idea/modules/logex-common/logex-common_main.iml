@@ -6,7 +6,7 @@
         <compilerSettings />
         <compilerArguments>
           <option name="destination" value="$MODULE_DIR$/../../../logex-common/build/classes/kotlin/main" />
-          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.0-rc-39/c1aa40cde718f9053f6e842434d01ef95dc342fe/kotlin-stdlib-common-1.2.0-rc-39.jar" />
+          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.2.31/d4971390f1c347f9ab6864da281cc644d899c9d3/kotlin-stdlib-common-1.2.31.jar" />
           <option name="languageVersion" value="1.2" />
           <option name="apiVersion" value="1.2" />
           <option name="pluginOptions">
@@ -27,10 +27,9 @@
     </content>
     <content url="file://$MODULE_DIR$/../../../logex-common/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/main/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-common/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="jdk" jdkName="Kotlin SDK" jdkType="KotlinSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.2.0-rc-39" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.2.31" level="project" />
   </component>
 </module>

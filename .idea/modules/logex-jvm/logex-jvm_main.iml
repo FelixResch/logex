@@ -34,16 +34,12 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/build/generated" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../../logex-jvm/src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/kotlin" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../logex-jvm/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="logex-common_main" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.0-rc-39" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.0-rc-39" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.0-rc-39" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.2.31" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
   </component>
 </module>

@@ -9,8 +9,8 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    ext.kotlin_version = '1.2.0-rc-39'
-    ext.dokka_version = '0.9.15'
+    ext.kotlin_version = '1.2.31'
+    ext.dokka_version = '0.9.16'
 
     repositories {
         jcenter()

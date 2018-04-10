@@ -31,7 +31,7 @@ class Logex : Runnable {
     val versionRequested: Boolean = false
 
     @CommandLine.Option(names = ["--suppress-ast"], description = ["Don't print the AST"])
-    val suppressAct: Boolean = false
+    val suppressAst: Boolean = false
 
     @CommandLine.Option(names = ["-s", "--silent"], description = ["Only print the table"])
     val silent: Boolean = false
@@ -48,10 +48,10 @@ class Logex : Runnable {
         SystemHelper.enableUnicode()
         if (printDebug)
             SystemHelper.enableDebug()
-        val logicExpression = LogicExpression.parse(listOf("-not A -and B"))
+        val logicExpression = LogicExpression.parse(expression)
         if (!silent)
             logicExpression.printExpression()
-        if (!silent && !suppressAct)
+        if (!silent && !suppressAst)
             ASTPrinter.printAST(logicExpression.rootExpressionNode)
         val result = logicExpression.execute()
         result.print(outputStyle.resultDisplay)
